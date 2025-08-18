@@ -36,10 +36,10 @@ Aplicação SPA (Single Page Application) construída com **React** e **React Ro
 
 ```json
 {
-  "id": "string",            // uuid ou timestamp
+  "id": "string",           
   "name": "string",
-  "quantity": 3,            // integer >= 0 
-  "price": 399.90,          // number
+  "quantity": 3,           
+  "price": 399.90,          
   "category": "string",
   "description": "string",
   "createdAt": "ISO8601",
@@ -115,7 +115,7 @@ npm install
 
 # executar em modo de desenvolvimento
 npm run dev
-# abrir http://localhost:5173
+
 ```
 
 Build para produção:
