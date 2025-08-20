@@ -1,0 +1,15 @@
+.dropdown-content {
+  background-color: blue;
+  display: none;
+  pointer-events: none;
+  transform: translateY(-5%);
+  transition: tranform 150ms ease-in-out, opacity 100ms ease-in-out;
+}
+
+.dropdown-open {
+  display: flex;
+  flex-direction: column;
+  pointer-events: all;
+  position: static;
+  transform: translateY(0);
+}
