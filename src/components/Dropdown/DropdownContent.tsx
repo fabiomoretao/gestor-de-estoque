@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import "./style.css"
+import "./styles.css"
 
 type DropdownContentProps = {
     children: ReactNode;

@@ -1,12 +1,12 @@
 // - Deve possuir uma tela de criar novos itens.
 // Ela deve ter pelo menos os campos nome, quantidade, preço, categoria e descrição.
 
-import Dropdown from '../../components/Dropdown'
-import DropdownItems from '../../components/DropdownItem'
+import Dropdown from '../../components/Dropdown/DropdownContainer'
+import DropdownItems from '../../components/Dropdown/DropdownItem'
 
 export default function NewItemForm() {
-    const
-        categories = ['Móveis', 'Utilitários', 'Eletronico']
+    const categories = ['Móveis', 'Utilitários', 'Eletronico']
+
     return (
         <div>
             <form action="submit">

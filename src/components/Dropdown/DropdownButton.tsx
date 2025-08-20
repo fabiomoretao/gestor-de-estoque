@@ -1,4 +1,4 @@
-import "./style.css"
+import "./styles.css"
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"
 
 type DropdownButtonProps = {
