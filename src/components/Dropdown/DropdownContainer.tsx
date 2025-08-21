@@ -31,6 +31,8 @@ export default function DropdownContainer({ buttonText, content }: DropdownProps
         }
 
     }, [dropdownRef])
+
+
     return (
         <div ref={dropdownRef}>
             <DropdownButton

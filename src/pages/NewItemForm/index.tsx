@@ -11,6 +11,15 @@ export default function NewItemForm() {
     const [productQuantity, setProductQuantity] = useState('')
     const [productPrice, setProductPrice] = useState('')
     const [productDetails, setProductDetails] = useState('')
+    const [productCategory, setProductCategory] = useState('')
+
+    const handlerCategory = (category: string) => {
+        if (productCategory === category) {
+            setProductCategory('')
+        } else {
+            setProductCategory(category)
+        }
+    }
 
     const categories = ['Móveis', 'Utilitários', 'Eletronico']
 
@@ -40,9 +49,14 @@ export default function NewItemForm() {
                 />
 
                 <Dropdown
-                    buttonText="Categorias"
+                    buttonText={!productCategory ? "Categorias" : productCategory}
                     content={categories.map((category: string) => (
-                        <DropdownItems key={category}><p>{category}</p></DropdownItems>
+                        <DropdownItems
+                            key={category}
+                            onClick={() => handlerCategory(category)}
+                        >
+                            <p>{category}</p>
+                        </DropdownItems>
                     ))}
                 />
                 <div>
