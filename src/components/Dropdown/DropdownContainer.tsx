@@ -32,7 +32,6 @@ export default function DropdownContainer({ buttonText, content }: DropdownProps
 
     }, [dropdownRef])
 
-
     return (
         <div ref={dropdownRef}>
             <DropdownButton
@@ -43,6 +42,7 @@ export default function DropdownContainer({ buttonText, content }: DropdownProps
             </DropdownButton>
             <DropdownContent
                 open={open}
+                toggle={toggleDropdown}
             >
                 {content}
             </DropdownContent>
