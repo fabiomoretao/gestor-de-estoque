@@ -15,14 +15,13 @@
 //     - A quantidade de itens com menos de 10 em estoque.
 //     - Uma lista dos itens com menos de 10 em estoque.
 
-import useProducts from "./hooks/useProducts"
-import NewItemForm from "./pages/NewItemForm"
+import { RouterProvider } from "react-router-dom"
+import router from "./router"
 
 function App() {
-  const { products, addProduct, removeProduct } = useProducts()
   return (
     <div>
-      <NewItemForm addProduct={addProduct} />
+      <RouterProvider router={router} />
     </div>
   )
 }

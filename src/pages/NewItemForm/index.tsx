@@ -4,6 +4,7 @@ import Dropdown from '../../components/Dropdown/DropdownContainer'
 import DropdownItems from '../../components/Dropdown/DropdownItem'
 import Input from '../../components/Input.tsx'
 import type { Product } from '../../types/index.ts'
+import { Link } from 'react-router-dom'
 
 type NewItemForm = {
     addProduct: ({ name, category, quantity, price, detail }: Omit<Product, "id">) => void
@@ -46,6 +47,9 @@ export default function NewItemForm({ addProduct }: NewItemForm) {
 
     return (
         <div>
+            <Link to="/">Inicio</Link>
+            <br />
+            <hr />
             <form onSubmit={handleSubmit}>
                 {/* campo de nome:  */}
                 <Input
@@ -83,7 +87,7 @@ export default function NewItemForm({ addProduct }: NewItemForm) {
                         </DropdownItems>
                     ))}
                 />
-                {/* campo de Detalhes do Produto:  */}
+                {/* campo de Detalhes do produto:  */}
                 <div>
                     <label htmlFor="productDetails">Descricão:</label>
                     <textarea
