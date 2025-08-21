@@ -4,9 +4,14 @@ import NewItemForm from "./pages/NewItemForm"
 import useProducts from "./hooks/useProducts"
 import ItemsList from "./pages/ItemsList"
 
-function NewItemWrapper() {
+function NewProduct() {
     const { addProduct } = useProducts()
     return <NewItemForm addProduct={addProduct} />
+}
+
+function ProductsList() {
+    const { products, removeProduct } = useProducts()
+    return <ItemsList removeProduct={removeProduct} products={products} />
 }
 
 const router = createBrowserRouter([
@@ -16,11 +21,11 @@ const router = createBrowserRouter([
     },
     {
         path: "/new-product",
-        element: <NewItemWrapper />,
+        element: <NewProduct />,
     },
     {
         path: "/products-list",
-        element: <ItemsList />,
+        element: <ProductsList />,
     }
 ])
 
