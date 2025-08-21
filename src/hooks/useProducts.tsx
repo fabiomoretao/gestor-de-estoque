@@ -1,13 +1,5 @@
 import { useState } from "react"
-
-export type Product = {
-    id: number,
-    name: string,
-    category: string,
-    quantity: number,
-    price: number,
-    detail: string
-}
+import type { Product } from "../types"
 
 export default function useProducts() {
     const [products, setProducts] = useState<Product[]>(() => {
@@ -37,12 +29,3 @@ export default function useProducts() {
 
     return { products, addProduct, removeProduct }
 }
-
-//  Product = {
-//     id: name,
-//     name: productName,
-//     category: productCategory,
-//     quantity: +productQuantity,
-//         price: +productPrice,
-//             detail: productDetails
-//     }

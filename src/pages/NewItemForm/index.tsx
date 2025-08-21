@@ -1,11 +1,9 @@
 // - Deve possuir uma tela de criar novos itens.
-// Ela deve ter pelo menos os campos nome, quantidade, preço, categoria e descrição.
-
 import { useState, type FormEvent } from 'react'
 import Dropdown from '../../components/Dropdown/DropdownContainer'
 import DropdownItems from '../../components/Dropdown/DropdownItem'
 import Input from '../../components/Input.tsx'
-import type { Product } from '../../hooks/useProducts.tsx'
+import type { Product } from '../../types/index.ts'
 
 type NewItemForm = {
     addProduct: ({ name, category, quantity, price, detail }: Omit<Product, "id">) => void
@@ -27,6 +25,7 @@ export default function NewItemForm({ addProduct }: NewItemForm) {
         }
     }
 
+    // aciona um novo produto no armazenamento local e limpa os imputs
     const handleSubmit = (ev: FormEvent<HTMLFormElement>) => {
         ev.preventDefault()
         addProduct({
@@ -48,6 +47,7 @@ export default function NewItemForm({ addProduct }: NewItemForm) {
     return (
         <div>
             <form onSubmit={handleSubmit}>
+                {/* campo de nome:  */}
                 <Input
                     label='Produto'
                     name='product'
@@ -55,6 +55,7 @@ export default function NewItemForm({ addProduct }: NewItemForm) {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProductName(e.target.value)}
                     value={productName}
                 />
+                {/* campo de Quantidade:  */}
                 <Input
                     label='Quantidade'
                     name='quantity'
@@ -62,6 +63,7 @@ export default function NewItemForm({ addProduct }: NewItemForm) {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProductQuantity(e.target.value)}
                     value={productQuantity}
                 />
+                {/* campo de Preco:  */}
                 <Input
                     label='Preço'
                     name='price'
@@ -69,6 +71,7 @@ export default function NewItemForm({ addProduct }: NewItemForm) {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProductPrice(e.target.value)}
                     value={productPrice}
                 />
+                {/* campo de Categorias:  */}
                 <Dropdown
                     buttonText={!productCategory ? "Categorias" : productCategory}
                     content={categories.map((category: string) => (
@@ -80,6 +83,7 @@ export default function NewItemForm({ addProduct }: NewItemForm) {
                         </DropdownItems>
                     ))}
                 />
+                {/* campo de Detalhes do Produto:  */}
                 <div>
                     <label htmlFor="productDetails">Descricão:</label>
                     <textarea
