@@ -1,23 +1,17 @@
 // - Deve possuir uma tela de criar novos itens.
 // Ela deve ter pelo menos os campos nome, quantidade, preço, categoria e descrição.
 
-import { useState } from 'react'
+import { useState, type FormEvent } from 'react'
 import Dropdown from '../../components/Dropdown/DropdownContainer'
 import DropdownItems from '../../components/Dropdown/DropdownItem'
 import Input from '../../components/Input.tsx'
+import type { Product } from '../../hooks/useProducts.tsx'
 
-type Product = {
-    id: number
-    name: string
-    category: string
-    quantity: number
-    price: number
-    detail: string
+type NewItemForm = {
+    addProduct: ({ name, category, quantity, price, detail }: Omit<Product, "id">) => void
 }
 
-const allProducts: object[] = []
-
-export default function NewItemForm() {
+export default function NewItemForm({ addProduct }: NewItemForm) {
     const [productName, setProductName] = useState('')
     const [productQuantity, setProductQuantity] = useState('')
     const [productPrice, setProductPrice] = useState('')
@@ -33,19 +27,27 @@ export default function NewItemForm() {
         }
     }
 
-    const categories = ['Móveis', 'Utilitários', 'Eletronico']
-    const product: Product = {
-        id: allProducts.length,
-        name: productName,
-        category: productCategory,
-        quantity: +productQuantity,
-        price: +productPrice,
-        detail: productDetails
+    const handleSubmit = (ev: FormEvent<HTMLFormElement>) => {
+        ev.preventDefault()
+        addProduct({
+            name: productName,
+            category: productCategory,
+            quantity: +productQuantity,
+            price: +productPrice,
+            detail: productDetails
+        })
+        setProductName('')
+        setProductQuantity('')
+        setProductPrice('')
+        setProductDetails('')
+        setProductCategory('')
     }
+
+    const categories = ['Móveis', 'Utilitários', 'Eletronico']
 
     return (
         <div>
-            <form action="submit">
+            <form onSubmit={handleSubmit}>
                 <Input
                     label='Produto'
                     name='product'
@@ -87,12 +89,7 @@ export default function NewItemForm() {
                         value={productDetails}
                     ></textarea>
                 </div>
-                <button onClick={() => {
-                    allProducts.push(product)
-                    console.log(allProducts)
-                    console.log(product)
-                }
-                }>Adicionar Produto</button>
+                <button type='submit'>Adicionar Produto</button>
             </form>
         </div>
     )

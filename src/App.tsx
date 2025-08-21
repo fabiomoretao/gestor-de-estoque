@@ -15,12 +15,14 @@
 //     - A quantidade de itens com menos de 10 em estoque.
 //     - Uma lista dos itens com menos de 10 em estoque.
 
+import useProducts from "./hooks/useProducts"
 import NewItemForm from "./pages/NewItemForm"
 
 function App() {
+  const { products, addProduct, removeProduct } = useProducts()
   return (
     <div>
-      <NewItemForm />
+      <NewItemForm addProduct={addProduct} />
     </div>
   )
 }
