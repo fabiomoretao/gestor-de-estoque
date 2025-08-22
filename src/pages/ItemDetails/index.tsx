@@ -22,7 +22,7 @@ export default function ItemDetails({ products }: ItemDetailsProps) {
                 <button>voltar</button>
             </Link>
             <h2>{product.name}</h2>
-            <p>{product.detail}</p>
+            <p>{product.details}</p>
             <p>R$ {product.price}</p>
             <p>{product.category}</p>
             <p>{product.quantity}</p>

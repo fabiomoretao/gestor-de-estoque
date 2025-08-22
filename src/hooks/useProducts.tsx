@@ -3,14 +3,13 @@ import type { Product } from "../types"
 
 export default function useProducts() {
     const [products, setProducts] = useState<Product[]>(() => {
-        const storedProduct = localStorage.getItem("ge-product")
-        if (!storedProduct) return []
-        return JSON.parse(storedProduct)
+        const stored = localStorage.getItem("ge-product")
+        return stored ? JSON.parse(stored) as Product[] : []
     })
 
-    const addProduct = ({ name, category, quantity, price, detail }: Omit<Product, "id">) => {
+    const addProduct = ({ name, category, quantity, price, details }: Omit<Product, "id">) => {
         const id = Math.floor(Math.random() * 100000)
-        const product: Product = { id, name, category, quantity, price, detail }
+        const product: Product = { id, name, category, quantity, price, details }
 
         setProducts((state: Product[]) => {
             const newState = [...state, product]
@@ -27,5 +26,17 @@ export default function useProducts() {
         })
     }
 
-    return { products, addProduct, removeProduct }
+    const updateProduct = (id: number, changes: Partial<Omit<Product, "id">>) => {
+        const product: Product | undefined = products.find(p => (p.id === id))
+
+        if (product) {
+            setProducts((state: Product[]) => {
+                const newState = state.map(p => p.id === id ? { ...p, ...changes } : p)
+                localStorage.setItem("ge-product", JSON.stringify(newState))
+                return newState
+            })
+        }
+    }
+
+    return { products, addProduct, removeProduct, updateProduct }
 }

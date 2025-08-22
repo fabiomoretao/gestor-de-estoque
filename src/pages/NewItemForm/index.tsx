@@ -7,8 +7,10 @@ import type { Product } from '../../types/index.ts'
 import { Link } from 'react-router-dom'
 
 type NewItemForm = {
-    addProduct: ({ name, category, quantity, price, detail }: Omit<Product, "id">) => void
+    addProduct: ({ name, category, quantity, price, details }: Omit<Product, "id">) => void
 }
+
+export const categories = ['Móveis', 'Utilitários', 'Eletronico']
 
 export default function NewItemForm({ addProduct }: NewItemForm) {
     const [productName, setProductName] = useState('')
@@ -34,7 +36,7 @@ export default function NewItemForm({ addProduct }: NewItemForm) {
             category: productCategory,
             quantity: +productQuantity,
             price: +productPrice,
-            detail: productDetails
+            details: productDetails
         })
         setProductName('')
         setProductQuantity('')
@@ -43,7 +45,6 @@ export default function NewItemForm({ addProduct }: NewItemForm) {
         setProductCategory('')
     }
 
-    const categories = ['Móveis', 'Utilitários', 'Eletronico']
 
     return (
         <div>

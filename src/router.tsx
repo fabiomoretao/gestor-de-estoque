@@ -21,6 +21,11 @@ function ProductDetails() {
     return <ItemDetails products={products} />
 }
 
+function UpdateProduct() {
+    const { products, updateProduct } = useProducts()
+    return <UpdateItem updateProduct={updateProduct} products={products} />
+}
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -39,8 +44,8 @@ const router = createBrowserRouter([
         element: <ProductDetails />,
     },
     {
-        path: "update-product:productId",
-        element: <UpdateItem />,
+        path: "update-product/:productId",
+        element: <UpdateProduct />,
     }
 ])
 
