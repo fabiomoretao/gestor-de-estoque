@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import type { Product } from "../../types";
 
 type ItemsListProps = {
-    removeProduct: (id: number) => void
+    removeProduct: (id: string) => void
     products: Product[]
 }
 

@@ -1,3 +1,5 @@
+// - Deve possuir uma página que exibe informações detalhadas de um item, 
+// exibindo todas as suas propriedades, bem como botões para atualizar e excluir o item.
 import { Link, useParams } from "react-router-dom";
 import type { Product } from "../../types";
 
@@ -8,7 +10,7 @@ type ItemDetailsProps = {
 export default function ItemDetails({ products }: ItemDetailsProps) {
     // obtem o produto pelo id passado na url
     const { productId } = useParams()
-    const product = products.find(p => productId ? p.id === +productId : null)
+    const product = products.find(p => productId ? p.id === productId : null)
 
     if (!product) {
         return (

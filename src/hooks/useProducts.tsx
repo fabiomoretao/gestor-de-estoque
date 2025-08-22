@@ -8,9 +8,11 @@ export default function useProducts() {
     })
 
     const addProduct = ({ name, category, quantity, price, details }: Omit<Product, "id">) => {
-        const id = Math.floor(Math.random() * 100000)
+        const id = crypto.randomUUID()
         const product: Product = { id, name, category, quantity, price, details }
-
+        if (products.find(p => (p.name === name))) {
+            return alert("Esse produto já existe\nVocê pode altera-lo em 'Editar Produto'")
+        }
         setProducts((state: Product[]) => {
             const newState = [...state, product]
             localStorage.setItem("ge-product", JSON.stringify(newState))
@@ -18,7 +20,7 @@ export default function useProducts() {
         })
     }
 
-    const removeProduct = (id: number) => {
+    const removeProduct = (id: string) => {
         setProducts((state: Product[]) => {
             const newState = state.filter((product: Product) => product.id !== id)
             localStorage.setItem("ge-product", JSON.stringify(newState))
@@ -26,7 +28,7 @@ export default function useProducts() {
         })
     }
 
-    const updateProduct = (id: number, changes: Partial<Omit<Product, "id">>) => {
+    const updateProduct = (id: string, changes: Partial<Omit<Product, "id">>) => {
         const product: Product | undefined = products.find(p => (p.id === id))
 
         if (product) {
