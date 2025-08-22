@@ -1,105 +1,21 @@
-// - Deve possuir uma tela de criar novos itens.
-import { useState, type FormEvent } from 'react'
-import Dropdown from '../../components/Dropdown/DropdownContainer'
-import DropdownItems from '../../components/Dropdown/DropdownItem'
-import Input from '../../components/Input.tsx'
-import type { Product } from '../../types/index.ts'
 import { Link } from 'react-router-dom'
+import Form from '../../components/Form'
+import type { Product } from '../../types'
 
-type NewItemForm = {
-    addProduct: ({ name, category, quantity, price, details }: Omit<Product, "id">) => void
+type NewItemFormProps = {
+    addProduct: (data: Omit<Product, "id">) => void
 }
 
-export const categories = ['Móveis', 'Utilitários', 'Eletronico']
-
-export default function NewItemForm({ addProduct }: NewItemForm) {
-    const [productName, setProductName] = useState('')
-    const [productQuantity, setProductQuantity] = useState('')
-    const [productPrice, setProductPrice] = useState('')
-    const [productDetails, setProductDetails] = useState('')
-    const [productCategory, setProductCategory] = useState('')
-
-    // Quando a mesma categoria for selecionada desmarca, se não adiciona o valor a categoria referente
-    const handlerCategory = (category: string) => {
-        if (productCategory === category) {
-            setProductCategory('')
-        } else {
-            setProductCategory(category)
-        }
-    }
-
-    // aciona um novo produto no armazenamento local e limpa os imputs
-    const handleSubmit = (ev: FormEvent<HTMLFormElement>) => {
-        ev.preventDefault()
-        addProduct({
-            name: productName,
-            category: productCategory,
-            quantity: +productQuantity,
-            price: +productPrice,
-            details: productDetails
-        })
-        setProductName('')
-        setProductQuantity('')
-        setProductPrice('')
-        setProductDetails('')
-        setProductCategory('')
-    }
-
-
+export default function NewItemForm({ addProduct }: NewItemFormProps) {
     return (
         <div>
             <Link to="/">Inicio</Link>
             <br />
             <hr />
-            <form onSubmit={handleSubmit}>
-                {/* campo de nome:  */}
-                <Input
-                    label='Produto'
-                    name='product'
-                    type='text'
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProductName(e.target.value)}
-                    value={productName}
-                />
-                {/* campo de Quantidade:  */}
-                <Input
-                    label='Quantidade'
-                    name='quantity'
-                    type='number'
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProductQuantity(e.target.value)}
-                    value={productQuantity}
-                />
-                {/* campo de Preco:  */}
-                <Input
-                    label='Preço'
-                    name='price'
-                    type='number'
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProductPrice(e.target.value)}
-                    value={productPrice}
-                />
-                {/* campo de Categorias:  */}
-                <Dropdown
-                    buttonText={!productCategory ? "Categorias" : productCategory}
-                    content={categories.map((category: string) => (
-                        <DropdownItems
-                            key={category}
-                            onClick={() => handlerCategory(category)}
-                        >
-                            <p>{category}</p>
-                        </DropdownItems>
-                    ))}
-                />
-                {/* campo de Detalhes do produto:  */}
-                <div>
-                    <label htmlFor="productDetails">Descricão:</label>
-                    <textarea
-                        name="productDetails"
-                        id="productDetails"
-                        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setProductDetails(e.target.value)}
-                        value={productDetails}
-                    ></textarea>
-                </div>
-                <button type='submit'>Adicionar Produto</button>
-            </form>
+            <Form
+                onSubmit={addProduct}
+                submitText="Adicionar Produto"
+            />
         </div>
     )
 }
