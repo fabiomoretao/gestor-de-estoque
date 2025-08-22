@@ -1,3 +1,6 @@
+// Deve possuir uma página que lista todos os itens em estoque em uma tabela. 
+// Essa tabela deve mostrar informações resumidas do item e 3 botões: 
+// ver mais detalhes do item, atualizar e excluir.
 import { Link } from "react-router-dom";
 import type { Product } from "../../types";
 
@@ -16,16 +19,16 @@ export default function ItemsList({ removeProduct, products }: ItemsListProps) {
                 {products.length > 0
                     ?
                     products.map((product) => (
-                        <div>
-                            <h2>{product.name}</h2>
-                            <p>{product.category}</p>
-                            <p>{product.price}</p>
+                        <div key={product.id}>
+                            <p>{product.id}</p>
+                            <p>{product.name}</p>
                             <p>{product.quantity}</p>
-                            <p>{product.detail}</p>
+                            <p>{product.category}</p>
+                            <Link to={`/product-details/${product.id}`}>Ver Detalhes</Link>
+                            <Link to={`/update-product/${product.id}`}>Editar Produto</Link>
                             <button
                                 onClick={() => removeProduct(product.id)}
-                            >
-                                Remover
+                            >Remover
                             </button>
                         </div>
                     )) :

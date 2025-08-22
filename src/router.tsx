@@ -3,6 +3,8 @@ import Dashboard from "./pages/Dashboard"
 import NewItemForm from "./pages/NewItemForm"
 import useProducts from "./hooks/useProducts"
 import ItemsList from "./pages/ItemsList"
+import ItemDetails from "./pages/ItemDetails"
+import UpdateItem from "./pages/UpdateItem"
 
 function NewProduct() {
     const { addProduct } = useProducts()
@@ -14,18 +16,31 @@ function ProductsList() {
     return <ItemsList removeProduct={removeProduct} products={products} />
 }
 
+function ProductDetails() {
+    const { products } = useProducts()
+    return <ItemDetails products={products} />
+}
+
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Dashboard />,
     },
     {
-        path: "/new-product",
+        path: "new-product",
         element: <NewProduct />,
     },
     {
-        path: "/products-list",
+        path: "products-list",
         element: <ProductsList />,
+    },
+    {
+        path: "product-details/:productId",
+        element: <ProductDetails />,
+    },
+    {
+        path: "update-product:productId",
+        element: <UpdateItem />,
     }
 ])
 
