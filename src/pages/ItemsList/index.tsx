@@ -15,6 +15,7 @@ export default function ItemsList({ removeProduct, products }: ItemsListProps) {
             <h1>Lista de itens</h1>
             <Link to='/'>Inicio</Link>
             <br />
+            {/* deve mostrar informações resumidas do item */}
             <div>
                 {products.length > 0
                     ?
@@ -24,8 +25,9 @@ export default function ItemsList({ removeProduct, products }: ItemsListProps) {
                             <p>{product.name}</p>
                             <p>{product.quantity}</p>
                             <p>{product.category}</p>
-                            <Link to={`/product-details/${product.id}`}>Ver Detalhes</Link>
-                            <Link to={`/update-product/${product.id}`}>Editar Produto</Link>
+                            {/* e 3 botões ver mais detalhes do item, atualizar e excluir. */}
+                            <Link to={`/product-details/${product.id}`}><button>Ver Detalhes</button></Link>
+                            <Link to={`/update-product/${product.id}`}><button>Editar Produto</button></Link>
                             <button
                                 onClick={() => removeProduct(product.id)}
                             >Remover

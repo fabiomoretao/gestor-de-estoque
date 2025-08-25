@@ -1,3 +1,5 @@
+// cada opcao individual do dropdown
+
 import "./styles.css"
 
 type DropdownItemsProps = {

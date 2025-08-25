@@ -1,3 +1,4 @@
+// contem as opcoes e o botao do dropdown e controla o seu comportamento
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import DropdownButton from "./DropdownButton"
 import DropdownContent from "./DropdownContent";
@@ -9,10 +10,7 @@ export type DropdownProps = {
 
 export default function DropdownContainer({ buttonText, content }: DropdownProps) {
     const [open, setOpen] = useState(false)
-
     const dropdownRef = useRef<HTMLDivElement>(null)
-
-
     const toggleDropdown = () => {
         setOpen((open) => !open)
     }

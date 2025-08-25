@@ -1,3 +1,4 @@
+// texto que aparece no botao do dropdown
 import "./styles.css"
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"
 

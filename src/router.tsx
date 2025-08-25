@@ -22,8 +22,8 @@ function ProductsList() {
 }
 
 function ProductDetails() {
-    const { products } = useProducts()
-    return <ItemDetails products={products} />
+    const { products, removeProduct } = useProducts()
+    return <ItemDetails removeProduct={removeProduct} products={products} />
 }
 
 function UpdateProduct() {

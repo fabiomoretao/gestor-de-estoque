@@ -1,16 +1,21 @@
+// hook para armazenar e controlar os dados do produto cadastrado
+
 import { useState } from "react"
 import type { Product } from "../types"
 
 export default function useProducts() {
+    // armazena os dados no localStorage no espaco ge-product (produto do gestor de estoque)
     const [products, setProducts] = useState<Product[]>(() => {
         const stored = localStorage.getItem("ge-product")
         return stored ? JSON.parse(stored) as Product[] : []
     })
 
-    const addProduct = ({ name, category, quantity, price, details }: Omit<Product, "id">) => {
+    // adiciona um novo produto com o dados fornecidos pelo usuaria, e cria uma id unica e a data de criacao desse produto
+    const addProduct = ({ name, category, quantity, price, details }: Omit<Product, "id" | "date">) => {
         const id = crypto.randomUUID()
         const date = new Date()
         const product: Product = { id, name, category, quantity, price, details, date }
+        // se algum produto armazenado tiver o mesmo nome desse produto avisa o usuario que o produto ja existe
         if (products.find(p => (p.name === name))) {
             return alert("Esse produto já existe\nVocê pode altera-lo em 'Editar Produto'")
         }
@@ -21,6 +26,7 @@ export default function useProducts() {
         })
     }
 
+    // cria um filtro com todos o produtos que nao possue o id que foi passado e atualiza o valor do ge-product com esse novo array
     const removeProduct = (id: string) => {
         setProducts((state: Product[]) => {
             const newState = state.filter((product: Product) => product.id !== id)
@@ -29,6 +35,8 @@ export default function useProducts() {
         })
     }
 
+    // obtem determinado produto pelo id e cria um array onde copia os produtos com o id diferente e 
+    // aplica as mudancas no produto que possue o id fornecido
     const updateProduct = (id: string, changes: Partial<Omit<Product, "id">>) => {
         const product: Product | undefined = products.find(p => (p.id === id))
 

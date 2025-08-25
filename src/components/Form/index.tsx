@@ -1,3 +1,6 @@
+// - Esse formulario serve tanto para criar novos itens como atualizar esses itens.
+//  Ela deve ter pelo menos os campos nome, quantidade, preço, categoria e descrição.
+
 import { useState, type FormEvent } from 'react'
 import Dropdown from '../../components/Dropdown/DropdownContainer'
 import DropdownItems from '../../components/Dropdown/DropdownItem'
@@ -7,22 +10,20 @@ import type { Product } from '../../types'
 export const categories = ['Móveis', 'Utilitários', 'Eletronico']
 
 type ProductFormProps = {
-    initialValues?: Omit<Product, "id">,
-    onSubmit: (values: Omit<Product, "id">) => void,
+    initialValues?: Omit<Product, "id" | "date">,
+    onSubmit: (values: Omit<Product, "id" | "date">) => void,
     submitText?: string
 }
 
-export default function ProductForm({
-    initialValues,
-    onSubmit,
-    submitText = "Salvar"
-}: ProductFormProps) {
+export default function ProductForm({ initialValues, onSubmit, submitText = "Salvar" }: ProductFormProps) {
+    // Caso ja for um produto cadastrado mostra os valores desse produto no input
     const [productName, setProductName] = useState(initialValues?.name ?? "")
     const [productQuantity, setProductQuantity] = useState(initialValues?.quantity?.toString() ?? "")
     const [productPrice, setProductPrice] = useState(initialValues?.price?.toString() ?? "")
     const [productDetails, setProductDetails] = useState(initialValues?.details ?? "")
     const [productCategory, setProductCategory] = useState(initialValues?.category ?? "")
 
+    // Se a mesma opcao da categoria for escolhida o seu valor volta a ser "categoria"
     const handlerCategory = (category: string) => {
         if (productCategory === category) {
             setProductCategory("")
@@ -31,6 +32,7 @@ export default function ProductForm({
         }
     }
 
+    // atualiza ou cria um novo produto dependendo da funcao que foi passada como onSubimit
     const handleSubmit = (ev: FormEvent<HTMLFormElement>) => {
         ev.preventDefault()
         onSubmit({
@@ -52,6 +54,7 @@ export default function ProductForm({
 
     return (
         <form onSubmit={handleSubmit}>
+            {/* campo de nome */}
             <Input
                 label="Produto"
                 name="product"
@@ -59,7 +62,7 @@ export default function ProductForm({
                 onChange={(e) => setProductName(e.target.value)}
                 value={productName}
             />
-
+            {/* campo de Quantidade */}
             <Input
                 label="Quantidade"
                 name="quantity"
@@ -67,7 +70,7 @@ export default function ProductForm({
                 onChange={(e) => setProductQuantity(e.target.value)}
                 value={productQuantity}
             />
-
+            {/* campo de Preco */}
             <Input
                 label="Preço"
                 name="price"
@@ -75,7 +78,7 @@ export default function ProductForm({
                 onChange={(e) => setProductPrice(e.target.value)}
                 value={productPrice}
             />
-
+            {/* campo de Categorias*/}
             <Dropdown
                 buttonText={!productCategory ? "Categorias" : productCategory}
                 content={categories.map((category) => (
@@ -87,7 +90,7 @@ export default function ProductForm({
                     </DropdownItems>
                 ))}
             />
-
+            {/* campo de Descricao */}
             <div>
                 <label htmlFor="productDetails">Descrição:</label>
                 <textarea
