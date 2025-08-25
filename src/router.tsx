@@ -6,6 +6,11 @@ import ItemsList from "./pages/ItemsList"
 import ItemDetails from "./pages/ItemDetails"
 import UpdateItem from "./pages/UpdateItem"
 
+function Home() {
+    const { products } = useProducts()
+    return <Dashboard products={products} />
+}
+
 function NewProduct() {
     const { addProduct } = useProducts()
     return <NewItemForm addProduct={addProduct} />
@@ -29,7 +34,7 @@ function UpdateProduct() {
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Dashboard />,
+        element: <Home />,
     },
     {
         path: "new-product",

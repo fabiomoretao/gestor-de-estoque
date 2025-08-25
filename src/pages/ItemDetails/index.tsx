@@ -7,6 +7,18 @@ type ItemDetailsProps = {
     products: Product[]
 }
 
+// Formata a data de forma segura para o formato local
+const formatDate = (dateValue: string | number | Date | undefined) => {
+    if (!dateValue) return "—";
+    try {
+        const dateObj = dateValue instanceof Date ? dateValue : new Date(dateValue);
+        // apenas a data no formato local. Para data+hora use toLocaleString()
+        return dateObj.toLocaleDateString();
+    } catch {
+        return String(dateValue);
+    }
+};
+
 export default function ItemDetails({ products }: ItemDetailsProps) {
     // obtem o produto pelo id passado na url
     const { productId } = useParams()
@@ -24,6 +36,7 @@ export default function ItemDetails({ products }: ItemDetailsProps) {
                 <button>voltar</button>
             </Link>
             <h2>{product.name}</h2>
+            <p>{formatDate(product.date)}</p>
             <p>{product.details}</p>
             <p>R$ {product.price}</p>
             <p>{product.category}</p>

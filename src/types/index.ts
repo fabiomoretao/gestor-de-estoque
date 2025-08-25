@@ -4,5 +4,6 @@ export type Product = {
     category: string,
     quantity: number,
     price: number,
-    details: string
+    details: string,
+    date: Date
 }

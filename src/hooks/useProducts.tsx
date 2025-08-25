@@ -9,7 +9,8 @@ export default function useProducts() {
 
     const addProduct = ({ name, category, quantity, price, details }: Omit<Product, "id">) => {
         const id = crypto.randomUUID()
-        const product: Product = { id, name, category, quantity, price, details }
+        const date = new Date()
+        const product: Product = { id, name, category, quantity, price, details, date }
         if (products.find(p => (p.name === name))) {
             return alert("Esse produto já existe\nVocê pode altera-lo em 'Editar Produto'")
         }
