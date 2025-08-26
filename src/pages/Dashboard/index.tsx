@@ -1,13 +1,8 @@
-// - Deve possuir uma página inicial de dashboard que mostra:
-//     - A quantidade total de itens diferentes (ex.: 1 mesa e 3 cadeiras devem resultar em 2 itens ao todo).
-//     - A quantidade total de itens (ex.: 1 mesa e 3 cadeiras devem resultar em 4 itens ao todo).
-//     - A quantidade de itens adicionados nos últimos 10 dias.
-//     - Uma lista dos itens adicionados nos últimos 10 dias.
-//     - A quantidade de itens com menos de 10 em estoque.
-//     - Uma lista dos itens com menos de 10 em estoque.
-
+import { BsBoxes } from "react-icons/bs";
 import type { Product } from "../../types";
 import filterLastTenDays from "../../utils/filterLastTenDays";
+import styles from "./styles.module.css"
+import Button from "../../components/Button/Index";
 
 type DashboardProps = {
     products: Product[]
@@ -25,16 +20,79 @@ export default function Dashboard({ products }: DashboardProps) {
     const productsBelowTen = products.filter(product => (product.quantity <= 10))
 
     return (
-        <div>
-            <p>Quantidade de produtos diferentes: {quantityOfProducts}</p>
-            <p>Quantidade total de produtos: {productsTotal}</p>
-            <p>Produtos adicionados nos últimos 10 dias: {tenDaysAgoProducts.length}</p>
-            <p>Produtos com quantidade menor que 10: {productsBelowTen.length}</p>
-            <p>Lista de produtos com quantidade menor que 10: </p>
-            {/* - Uma lista dos itens com menos de 10 em estoque. */}
-            {productsBelowTen.map(product => (
-                <p key={product.id}>{product.name}</p>//     - Uma lista dos itens com menos de 10 em estoque.
-            ))}
+        <div className={styles.container}>
+            {/* - A quantidade total de itens diferentes (ex.: 1 mesa e 3 cadeiras devem resultar em 2 itens ao todo). */}
+            <div className={styles.card}>
+                <div className={styles.content}>
+                    <BsBoxes />
+                    <p>Diversidade</p>
+                </div>
+                <p className={styles.number}>{quantityOfProducts}</p>
+            </div>
+            {/* - A quantidade total de itens (ex.: 1 mesa e 3 cadeiras devem resultar em 4 itens ao todo). */}
+            <div className={styles.card}>
+                <div className={styles.content}>
+                    <BsBoxes />
+                    <p>Inventário Total</p>
+                </div>
+                <p className={styles.number}>{productsTotal}</p>
+            </div>
+            {/* - A quantidade de itens adicionados nos últimos 10 dias. */}
+            <div className={styles.card}>
+                <div className={styles.content}>
+                    <BsBoxes />
+                    <p>Recentes</p>
+                </div>
+                <p className={styles.number}>{tenDaysAgoProducts.length}</p>
+            </div>
+            {/* - A quantidade de itens com menos de 10 em estoque. */}
+            <div className={styles.card}>
+                <div className={styles.content}>
+                    <BsBoxes />
+                    <p>Acabando</p>
+                </div>
+                <p className={styles.number}>{productsBelowTen.length}</p>
+            </div>
+
+
+            {/* - Uma lista dos itens adicionados nos últimos 10 dias. */}
+            <div className={styles.list}>
+                <div className={styles.listHeader}>
+                    <p>Produtos Recentes</p>
+                    <p>Ações</p>
+                </div>
+                {/* - Uma lista dos itens com menos de 10 em estoque. */}
+                {tenDaysAgoProducts.map(product => (
+                    <div key={product.id} className={styles.product}>
+                        <p>{product.name}</p> {/* - Uma lista dos itens com menos de 10 em estoque. */}
+                        <Button
+                            route={`product-details/${product.id}`}
+                            className={styles.link}
+                            text="Ver Produto"
+                        />
+                    </div>
+                ))}
+            </div>
+            <div className={styles.list}>
+                <div className={styles.belowTenListHeader}>
+                    <p>Produtos Acabando</p>
+                    <p>Qtd</p>
+                    <p>Ações</p>
+                </div>
+
+                {/* - Uma lista dos itens com menos de 10 em estoque. */}
+                {productsBelowTen.map(product => (
+                    <div key={product.id} className={`${styles.product} ${styles.productBelowTen}`}>
+                        <p>{product.name}</p> {/* - Uma lista dos itens com menos de 10 em estoque. */}
+                        <p>{product.quantity}</p>
+                        <Button
+                            route={`product-details/${product.id}`}
+                            className={styles.link}
+                            text="Ver Produto"
+                        />
+                    </div>
+                ))}
+            </div>
         </div>
 
     )

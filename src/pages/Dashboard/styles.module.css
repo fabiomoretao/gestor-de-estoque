@@ -1,6 +1,85 @@
 .container {
   display: grid;
-  grid-template-areas:
-    'card1 card2 card3 card4'
-    'recentProducts recentProducts endingProducts endingProducts';
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 60px;
+  padding: 0 130px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  flex-direction: column;
+  font-size: 20px;
+  padding: 2rem;
+  padding-bottom: 4rem;
+  height: 200px;
+  width: 250px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.number {
+  margin: 1rem;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* Listas */
+.list {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  grid-column: span 2;
+  padding: 30px 0;
+  width: 100%;
+}
+
+.listHeader {
+  display: flex;
+  border-bottom: solid 1px #000;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0 4rem 0 2rem;
+  width: 100%;
+}
+
+.belowTenListHeader {
+  display: grid;
+  align-items: center;
+  justify-items: end;
+  border-bottom: solid 1px #000;
+  grid-template-columns: 10rem 10rem 1fr;
+  margin: 0;
+  padding: 0 4rem 0 2rem;
+  width: 100%;
+}
+.belowTenListHeader p:first-child {
+  justify-self: start;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: solid 1px #000;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.productBelowTen {
+  display: grid;
+  align-items: center;
+  justify-items: end;
+  grid-template-columns: 10rem 9.5rem 1fr;
+}
+
+.product p:first-child {
+  justify-self: start;
 }
