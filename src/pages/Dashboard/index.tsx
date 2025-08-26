@@ -6,7 +6,6 @@
 //     - A quantidade de itens com menos de 10 em estoque.
 //     - Uma lista dos itens com menos de 10 em estoque.
 
-import { Link } from "react-router-dom";
 import type { Product } from "../../types";
 import filterLastTenDays from "../../utils/filterLastTenDays";
 
@@ -27,22 +26,16 @@ export default function Dashboard({ products }: DashboardProps) {
 
     return (
         <div>
-            <h1>Pagina pricipal</h1>
-            <Link to="/new-product">Adicionar Produto</Link>
-            <br />
-            <Link to="/products-list">Lista de Produtos</Link>
-
-            <div>
-                <p>Quantidade de produtos diferentes: {quantityOfProducts}</p>
-                <p>Quantidade total de produtos: {productsTotal}</p>
-                <p>Produtos adicionados nos últimos 10 dias: {tenDaysAgoProducts.length}</p>
-                <p>Produtos com quantidade menor que 10: {productsBelowTen.length}</p>
-                <p>Lista de produtos com quantidade menor que 10: </p>
-                {/* - Uma lista dos itens com menos de 10 em estoque. */}
-                {productsBelowTen.map(product => (
-                    <p key={product.id}>{product.name}</p>//     - Uma lista dos itens com menos de 10 em estoque.
-                ))}
-            </div>
+            <p>Quantidade de produtos diferentes: {quantityOfProducts}</p>
+            <p>Quantidade total de produtos: {productsTotal}</p>
+            <p>Produtos adicionados nos últimos 10 dias: {tenDaysAgoProducts.length}</p>
+            <p>Produtos com quantidade menor que 10: {productsBelowTen.length}</p>
+            <p>Lista de produtos com quantidade menor que 10: </p>
+            {/* - Uma lista dos itens com menos de 10 em estoque. */}
+            {productsBelowTen.map(product => (
+                <p key={product.id}>{product.name}</p>//     - Uma lista dos itens com menos de 10 em estoque.
+            ))}
         </div>
+
     )
 }

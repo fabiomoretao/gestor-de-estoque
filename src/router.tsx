@@ -5,6 +5,7 @@ import useProducts from "./hooks/useProducts"
 import ItemsList from "./pages/ItemsList"
 import ItemDetails from "./pages/ItemDetails"
 import UpdateItem from "./pages/UpdateItem"
+import Layout from "./Layout"
 
 function Home() {
     const { products } = useProducts()
@@ -34,24 +35,16 @@ function UpdateProduct() {
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Home />,
+        element: <Layout />,
+        children: [
+            { index: true, element: <Home /> },
+            { path: "new-product", element: <NewProduct />, },
+            { path: "products-list", element: <ProductsList />, },
+            { path: "product-details/:productId", element: <ProductDetails />, },
+            { path: "update-product/:productId", element: <UpdateProduct />, }
+        ]
     },
-    {
-        path: "new-product",
-        element: <NewProduct />,
-    },
-    {
-        path: "products-list",
-        element: <ProductsList />,
-    },
-    {
-        path: "product-details/:productId",
-        element: <ProductDetails />,
-    },
-    {
-        path: "update-product/:productId",
-        element: <UpdateProduct />,
-    }
+
 ])
 
 export default router

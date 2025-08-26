@@ -1,0 +1,6 @@
+.container {
+  display: grid;
+  grid-template-areas:
+    'card1 card2 card3 card4'
+    'recentProducts recentProducts endingProducts endingProducts';
+}
