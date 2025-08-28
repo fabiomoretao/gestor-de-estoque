@@ -10,7 +10,8 @@
 
 .button:hover {
   background-color: #fae6fa;
-  color: #8b008b;
+  box-shadow: inset 0 0 0 2px #9900fa;
+  color: #9900fa;
 }
 
 .button:active {

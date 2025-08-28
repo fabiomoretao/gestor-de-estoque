@@ -1,14 +1,15 @@
 .header {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  margin-bottom: 3rem;
   align-items: center;
+  transform: translateY(-50%);
 }
 
-h2 {
+h1 {
   grid-column: 2;
   grid-row: 1;
   font-size: 32px;
+  margin-top: 0;
 }
 .return {
   display: flex;

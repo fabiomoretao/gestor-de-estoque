@@ -26,7 +26,7 @@ export default function UpdateItem({ products, updateProduct }: UpdateItemProps)
     return (
         <div>
             <div className={styles.header}>
-                <h2>Editar Produto</h2>
+                <h1>Editar Produto</h1>
                 <Link to='/products-list' style={{ textDecoration: 'none' }}>
                     <div className={styles.return}>
                         <FaCircleArrowLeft fontSize={"32px"} />

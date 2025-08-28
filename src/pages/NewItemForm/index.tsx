@@ -14,7 +14,7 @@ export default function NewItemForm({ addProduct }: NewItemFormProps) {
     return (
         <div>
             <div className={styles.header}>
-                <h2>Cadastro de Novo Produto</h2>
+                <h1>Cadastro de Novo Produto</h1>
                 <Link to='/' style={{ textDecoration: 'none' }}>
                     <div className={styles.return}>
                         <FaCircleArrowLeft fontSize={"32px"} />

@@ -6,12 +6,14 @@ type ButtonProp = {
   className?: string
   text: string
   type?: "button" | "submit" | "reset"
+  onClick?: () => void
 }
-export default function Button({ route, className, text, type }: ButtonProp) {
+export default function Button({ route, className, text, type, onClick }: ButtonProp) {
   const button = (
     <button
       className={`${styles.button} ${className}`}
       type={type}
+      onClick={onClick}
     >
       {text}
     </button>)
