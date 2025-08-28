@@ -3,6 +3,8 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
 import type { Product } from "../../types"
 import Form from "../../components/Form"
+import { FaCircleArrowLeft } from "react-icons/fa6"
+import styles from "./styles.module.css"
 
 type UpdateItemProps = {
     updateProduct: (id: string, changes: Partial<Omit<Product, "id">>) => void
@@ -23,9 +25,15 @@ export default function UpdateItem({ products, updateProduct }: UpdateItemProps)
 
     return (
         <div>
-            <Link to="/">Inicio</Link>
-            <br />
-            <hr />
+            <div className={styles.header}>
+                <h2>Editar Produto</h2>
+                <Link to='/products-list' style={{ textDecoration: 'none' }}>
+                    <div className={styles.return}>
+                        <FaCircleArrowLeft fontSize={"32px"} />
+                        <p>Voltar</p>
+                    </div>
+                </Link>
+            </div>
             <Form
                 initialValues={product}
                 onSubmit={(values) => {
