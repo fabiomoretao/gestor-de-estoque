@@ -1,3 +1,4 @@
+import styles from './style.module.css'
 type InputProps = {
     label: string
     name: string
@@ -9,7 +10,7 @@ type InputProps = {
 
 export default function Input({ label, name, onChange, type, value }: InputProps) {
     return (
-        <div>
+        <div className={styles.container}>
             <label htmlFor={name}>{label}</label>
             <input
                 type={type}

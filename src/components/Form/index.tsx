@@ -2,10 +2,12 @@
 //  Ela deve ter pelo menos os campos nome, quantidade, preço, categoria e descrição.
 
 import { useState, type FormEvent } from 'react'
-import Dropdown from '../../components/Dropdown/DropdownContainer'
+import DropdownContainer from '../../components/Dropdown/DropdownContainer'
 import DropdownItems from '../../components/Dropdown/DropdownItem'
 import Input from '../Input.tsx'
 import type { Product } from '../../types'
+import styles from './styles.module.css'
+import Button from '../Button/Index.tsx'
 
 export const categories = ['Móveis', 'Utilitários', 'Eletronico']
 
@@ -53,7 +55,7 @@ export default function ProductForm({ initialValues, onSubmit, submitText = "Sal
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.form}>
             {/* campo de nome */}
             <Input
                 label="Produto"
@@ -79,29 +81,32 @@ export default function ProductForm({ initialValues, onSubmit, submitText = "Sal
                 value={productPrice}
             />
             {/* campo de Categorias*/}
-            <Dropdown
-                buttonText={!productCategory ? "Categorias" : productCategory}
-                content={categories.map((category) => (
-                    <DropdownItems
-                        key={category}
-                        onClick={() => handlerCategory(category)}
-                    >
-                        <p>{category}</p>
-                    </DropdownItems>
-                ))}
-            />
+            <div className={styles.dropdown}>
+                <p>Categoria</p>
+                <DropdownContainer
+                    buttonText={!productCategory ? "Selecione uma categoria" : productCategory}
+                    content={categories.map((category) => (
+                        <DropdownItems
+                            key={category}
+                            onClick={() => handlerCategory(category)}
+                        >
+                            <p>{category}</p>
+                        </DropdownItems>
+                    ))}
+                />
+            </div>
             {/* campo de Descricao */}
-            <div>
+            <div className={styles.description}>
                 <label htmlFor="productDetails">Descrição:</label>
                 <textarea
                     name="productDetails"
                     id="productDetails"
                     onChange={(e) => setProductDetails(e.target.value)}
                     value={productDetails}
+                    className={styles.textarea}
                 />
             </div>
-
-            <button type="submit">{submitText}</button>
+            <Button type='submit' text={submitText} className={styles.button} />
         </form>
     )
 }

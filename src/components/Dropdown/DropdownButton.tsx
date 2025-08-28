@@ -1,5 +1,5 @@
 // texto que aparece no botao do dropdown
-import "./styles.css"
+import styles from "./styles.module.css"
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"
 
 type DropdownButtonProps = {
@@ -12,10 +12,10 @@ export default function DropdownButton({ children, open, toggle }: DropdownButto
     return (
         <div
             onClick={toggle}
-            className={`dropdown-btn ${open ? 'button-open' : null}`}
+            className={`${styles.dropdownBtn} ${open ? styles.buttonOpen : null}`}
         >
             {children}
-            <span className="toggle-icon">{open ? <FaChevronUp /> : <FaChevronDown />}</span>
+            <span className={styles.toggleIcon}>{open ? <FaChevronUp /> : <FaChevronDown />}</span>
         </div>
     )
 }

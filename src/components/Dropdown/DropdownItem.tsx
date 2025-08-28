@@ -1,6 +1,6 @@
 // cada opcao individual do dropdown
 
-import "./styles.css"
+import styles from "./styles.module.css"
 
 type DropdownItemsProps = {
     children: React.JSX.Element
@@ -9,7 +9,7 @@ type DropdownItemsProps = {
 
 export default function DropdownItems({ children, onClick }: DropdownItemsProps) {
     return (
-        <div className="dropdown-item" onClick={onClick}>
+        <div className={styles.dropdownItem} onClick={onClick}>
             {children}
         </div>
     )

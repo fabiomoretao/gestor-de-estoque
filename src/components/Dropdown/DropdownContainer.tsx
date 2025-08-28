@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import DropdownButton from "./DropdownButton"
 import DropdownContent from "./DropdownContent";
+import styles from "./styles.module.css"
 
 export type DropdownProps = {
     buttonText: string;
@@ -27,11 +28,10 @@ export default function DropdownContainer({ buttonText, content }: DropdownProps
         return () => {
             document.removeEventListener("click", handler)
         }
-
     }, [dropdownRef])
 
     return (
-        <div ref={dropdownRef}>
+        <div ref={dropdownRef} className={styles.dropdownContainer}>
             <DropdownButton
                 toggle={toggleDropdown}
                 open={open}

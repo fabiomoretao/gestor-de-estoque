@@ -1,0 +1,49 @@
+/*-- Dropdown container --*/
+.dropdownContainer {
+  position: relative;
+}
+
+/*-- Dropdow item --*/
+.dropdownItem {
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 0 1rem;
+}
+
+.dropdownItem:hover {
+  border: solid 2px #aaa;
+}
+
+/*-- Dropdown content --*/
+.dropdownContent {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  display: none;
+  pointer-events: none;
+  transform: translateY(-5%);
+  transition: tranform 300ms ease-in-out, opacity 1000ms ease-in-out;
+}
+
+.dropdownOpen {
+  display: flex;
+  flex-direction: column;
+  pointer-events: all;
+  position: absolute;
+  transform: translateY(0);
+  width: 100%;
+}
+
+/*-- Dropdown button --*/
+.dropdownBtn {
+  display: flex;
+  aling-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  border: solid 2px #aaa;
+  gap: 0.5rem;
+  padding: 3px 12px;
+}
+
+.buttonOpen {
+}

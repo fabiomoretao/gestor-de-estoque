@@ -30,6 +30,7 @@ export default function Layout() {
                 ><FaListUl />Lista de Produtos
                 </Link>
             </header>
+
             <main className={styles.main}>
                 <Outlet />
             </main>
