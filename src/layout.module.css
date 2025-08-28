@@ -26,9 +26,8 @@
 
 .main {
   display: flex;
-  background-color: #f9f9f9;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  margin-top: 5rem;
   width: 100vw;
 }
