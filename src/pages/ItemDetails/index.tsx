@@ -8,6 +8,7 @@ import { BsBoxes } from "react-icons/bs";
 import { MdOutlineCategory } from "react-icons/md";
 import { IoCashOutline } from "react-icons/io5";
 import Card from "../../components/Card";
+import formatPrice from "../../utils/formatPrice";
 
 type ItemDetailsProps = {
     removeProduct: (id: string) => void
@@ -46,7 +47,7 @@ export default function ItemDetails({ products, removeProduct }: ItemDetailsProp
                 </div>
             </header>
             <section className={styles.cardsSection}>
-                <Card title="Preço" text={`R$ ${product.price}`} icon={IoCashOutline} />
+                <Card title="Preço" text={formatPrice(product.price)} icon={IoCashOutline} />
                 <Card title="Quantidade" text={`${product.quantity} Unid.`} icon={BsBoxes} />
                 <Card title="Categoria" text={product.category} icon={MdOutlineCategory} />
             </section>
