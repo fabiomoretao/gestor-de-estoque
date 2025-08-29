@@ -1,6 +1,7 @@
 import type { Product } from "../../types";
 import styles from "./styles.module.css"
 import Button from "../../components/Button/Index";
+import Title from "../../components/Title";
 
 type ItemsListProps = {
     removeProduct: (id: string) => void
@@ -10,7 +11,7 @@ type ItemsListProps = {
 export default function ItemsList({ removeProduct, products }: ItemsListProps) {
     return (
         <div>
-            <h1 className={styles.header}>Lista de Produtos</h1>
+            <Title title="Lista de Produtos" />
 
             <div className={styles.container}>
                 <div className={styles.listHeader}>
@@ -32,7 +33,7 @@ export default function ItemsList({ removeProduct, products }: ItemsListProps) {
                             <div className={styles.actions}>
                                 <Button text="Ver Detalhes" link={`/product-details/${product.id}`} />
                                 <Button text="Editar Produto" link={`/update-product/${product.id}`} />
-                                <Button text="Remover Produto" onClick={() => removeProduct(product.id)} className={styles.remove} />
+                                <Button text="Remover Produto" onClick={() => removeProduct(product.id)} removeBtn />
                             </div>
                         </div>
                     )) :

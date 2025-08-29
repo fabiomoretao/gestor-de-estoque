@@ -3,9 +3,9 @@
   border-radius: 10px;
   border: transparent;
   color: #fff;
-  padding: 10px 15px;
-  font-weight: 700;
   cursor: pointer;
+  font-weight: 700;
+  padding: 10px 15px;
 }
 
 .button:hover {
@@ -16,5 +16,14 @@
 
 .button:active {
   transform: scale(0.95);
-  background-color: #cbc3e3;
+  background-color: #fcc2f2;
+}
+
+.removeBtn {
+  background-color: #a91b0d;
+}
+.removeBtn:hover {
+  background-color: #f2b2b7;
+  color: #d21404;
+  box-shadow: inset 0 0 0 2px #d21404;
 }

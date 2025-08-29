@@ -1,10 +1,9 @@
 // - Também deve possuir uma tela de atualizar os dados de um item. 
 // Ela pode ter o mesmo formato da tela de criação de novos itens.
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import type { Product } from "../../types"
 import Form from "../../components/Form"
-import { FaCircleArrowLeft } from "react-icons/fa6"
-import styles from "./styles.module.css"
+import Title from "../../components/Title"
 
 type UpdateItemProps = {
     updateProduct: (id: string, changes: Partial<Omit<Product, "id">>) => void
@@ -25,15 +24,7 @@ export default function UpdateItem({ products, updateProduct }: UpdateItemProps)
 
     return (
         <div>
-            <div className={styles.header}>
-                <h1>Editar Produto</h1>
-                <Link to='/products-list' style={{ textDecoration: 'none' }}>
-                    <div className={styles.return}>
-                        <FaCircleArrowLeft fontSize={"32px"} />
-                        <p>Voltar</p>
-                    </div>
-                </Link>
-            </div>
+            <Title title="Atualizar Produto" link={'/products-list'} />
             <Form
                 initialValues={product}
                 onSubmit={(values) => {
