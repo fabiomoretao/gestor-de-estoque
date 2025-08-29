@@ -3,8 +3,10 @@ import type { Product } from "../../types";
 import formatDate from "../../utils/formatDate";
 import styles from "./styles.module.css"
 import { FaCircleArrowLeft } from "react-icons/fa6";
-import { IoIosCash } from "react-icons/io";
 import Button from "../../components/Button/Index";
+import { BsBoxes } from "react-icons/bs";
+import { MdOutlineCategory } from "react-icons/md";
+import { IoCashOutline } from "react-icons/io5";
 
 type ItemDetailsProps = {
     removeProduct: (id: string) => void
@@ -45,32 +47,32 @@ export default function ItemDetails({ products, removeProduct }: ItemDetailsProp
             <section className={styles.cardsSection}>
                 <div className={styles.card}>
                     <div className={styles.content}>
-                        <IoIosCash />
+                        <IoCashOutline />
                         <p>Preço</p>
                     </div>
-                    <p className={styles.number}>R$ {product.price}</p>
+                    <h3>R$ {product.price}</h3>
                 </div>
 
                 <div className={styles.card}>
                     <div className={styles.content}>
-                        <IoIosCash />
+                        <BsBoxes />
                         <p>Quantidade</p>
                     </div>
-                    <p className={styles.number}>{product.quantity} Unid.</p>
+                    <h3>{product.quantity} Unid.</h3>
                 </div>
 
                 <div className={styles.card}>
                     <div className={styles.content}>
-                        <IoIosCash />
+                        <MdOutlineCategory />
                         <p>Categoria</p>
                     </div>
-                    <p className={styles.number}>{product.category}</p>
+                    <h3>{product.category}</h3>
                 </div>
             </section>
 
             <div className={styles.cardDetails}>
                 <div className={styles.content}>
-                    <p>Detalhes</p>
+                    <h3>Detalhes</h3>
                 </div>
                 <hr style={{ width: "100%", margin: "0", border: "solid 1px #6c3baa" }} />
                 <p>{product.details}</p>

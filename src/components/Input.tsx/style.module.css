@@ -10,6 +10,11 @@ input {
   border-radius: 5px;
   padding: 5px 12px;
 }
+input:focus {
+  border: 2px solid transparent;
+  border-color: #9900fa;
+  outline: none;
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

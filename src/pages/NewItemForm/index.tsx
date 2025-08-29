@@ -7,7 +7,7 @@ import styles from "./styles.module.css"
 import { Link } from 'react-router-dom'
 
 type NewItemFormProps = {
-    addProduct: (data: Omit<Product, "id" | "date">) => void
+    addProduct: (data: Omit<Product, "id" | "date" | "lastUpdate">) => void
 }
 
 export default function NewItemForm({ addProduct }: NewItemFormProps) {

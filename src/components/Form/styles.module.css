@@ -24,6 +24,11 @@
   height: 125px;
   width: 100%;
 }
+.textarea:focus {
+  border: 2px solid transparent;
+  border-color: #9900fa;
+  outline: none;
+}
 
 .dropdown {
   display: flex;

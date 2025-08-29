@@ -37,13 +37,16 @@
   border-radius: 15px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
   grid-column: span 2;
-  padding: 30px 0;
+  padding: 0 0 30px;
   width: 100%;
 }
 
 .listHeader {
+  background-color: #6c3baa;
+  color: #fff;
+  border-bottom: solid 5px #bbb;
+  border-radius: 15px 15px 0 0;
   display: flex;
-  border-bottom: solid 1px #000;
   justify-content: space-between;
   margin: 0;
   padding: 0 4rem 0 2rem;
@@ -51,10 +54,13 @@
 }
 
 .belowTenListHeader {
+  background-color: #6c3baa;
+  color: #fff;
+  border-bottom: solid 5px #bbb;
+  border-radius: 15px 15px 0 0;
   display: grid;
   align-items: center;
   justify-items: end;
-  border-bottom: solid 1px #000;
   grid-template-columns: 10rem 10rem 1fr;
   margin: 0;
   padding: 0 4rem 0 2rem;
