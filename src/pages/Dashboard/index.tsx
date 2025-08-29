@@ -6,6 +6,7 @@ import Button from "../../components/Button/Index";
 import { RiDatabase2Fill } from "react-icons/ri";
 import { FaClockRotateLeft } from "react-icons/fa6";
 import { IoHourglassOutline } from "react-icons/io5";
+import Card from "../../components/Card";
 
 type DashboardProps = {
     products: Product[]
@@ -24,41 +25,16 @@ export default function Dashboard({ products }: DashboardProps) {
 
     return (
         <div className={styles.container}>
-            {/* - A quantidade total de itens diferentes (ex.: 1 mesa e 3 cadeiras devem resultar em 2 itens ao todo). */}
-            <div className={styles.card}>
-                <div className={styles.content}>
-                    <BsBoxes />
-                    <p>Diversidade</p>
-                </div>
-                <p className={styles.number}>{quantityOfProducts}</p>
-            </div>
-
-            {/* - A quantidade total de itens (ex.: 1 mesa e 3 cadeiras devem resultar em 4 itens ao todo). */}
-            <div className={styles.card}>
-                <div className={styles.content}>
-                    <RiDatabase2Fill />
-                    <p>Inventário Total</p>
-                </div>
-                <p className={styles.number}>{productsTotal}</p>
-            </div>
-
-            {/* - A quantidade de itens adicionados nos últimos 10 dias. */}
-            <div className={styles.card}>
-                <div className={styles.content}>
-                    <FaClockRotateLeft />
-                    <p>Recentes</p>
-                </div>
-                <p className={styles.number}>{tenDaysAgoProducts.length}</p>
-            </div>
-
-            {/* - A quantidade de itens com menos de 10 em estoque. */}
-            <div className={styles.card}>
-                <div className={styles.content}>
-                    <IoHourglassOutline />
-                    <p>Acabando</p>
-                </div>
-                <p className={styles.number}>{productsBelowTen.length}</p>
-            </div>
+            <section className={styles.cardsSection}>
+                {/* - A quantidade total de itens diferentes (ex.: 1 mesa e 3 cadeiras devem resultar em 2 itens ao todo). */}
+                <Card title="Diversidade" text={`${quantityOfProducts} Unid.`} icon={BsBoxes} />
+                {/* - A quantidade total de itens (ex.: 1 mesa e 3 cadeiras devem resultar em 4 itens ao todo). */}
+                <Card title="Inventário" text={`${productsTotal} Unid.`} icon={RiDatabase2Fill} />
+                {/* - A quantidade de itens adicionados nos últimos 10 dias. */}
+                <Card title="Recentes" text={`${tenDaysAgoProducts.length} Unid.`} icon={FaClockRotateLeft} />
+                {/* - A quantidade de itens com menos de 10 em estoque. */}
+                <Card title="Acabando" text={`${productsBelowTen.length} Unid.`} icon={IoHourglassOutline} />
+            </section>
 
             {/* - Uma lista dos itens adicionados nos últimos 10 dias. */}
             <div className={styles.list}>
@@ -72,8 +48,8 @@ export default function Dashboard({ products }: DashboardProps) {
                         <p>{product.name}</p> {/* - Uma lista dos itens com menos de 10 em estoque. */}
                         <Button
                             link={`product-details/${product.id}`}
-                            className={styles.link}
                             text="Ver Produto"
+                            className={styles.seeDetails}
                         />
                     </div>
                 ))}
@@ -89,11 +65,11 @@ export default function Dashboard({ products }: DashboardProps) {
                 {productsBelowTen.map(product => (
                     <div key={product.id} className={`${styles.product} ${styles.productBelowTen}`}>
                         <p>{product.name}</p> {/* - Uma lista dos itens com menos de 10 em estoque. */}
-                        <p>{product.quantity}</p>
+                        <p>{product.quantity} Unid.</p>
                         <Button
                             link={`product-details/${product.id}`}
-                            className={styles.link}
                             text="Ver Produto"
+                            className={styles.seeDetails}
                         />
                     </div>
                 ))}
