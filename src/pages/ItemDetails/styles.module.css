@@ -1,0 +1,25 @@
+.container {
+  padding: 0 100px;
+  width: 80vw;
+}
+
+.header {
+  transform: translateY(-50%);
+  position: relative;
+}
+
+.header h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 32px;
+}
+.return {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 20px;
+}

@@ -2,14 +2,15 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: center;
-  transform: translateY(-50%);
+  transform: translateY(-80%);
 }
 
-h1 {
+.header h1 {
   grid-column: 2;
   grid-row: 1;
   font-size: 32px;
-  margin-top: 0;
+  margin: 0;
+  padding: 0;
 }
 .return {
   display: flex;

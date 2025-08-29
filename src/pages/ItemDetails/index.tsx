@@ -1,8 +1,8 @@
-// - Deve possuir uma página que exibe informações detalhadas de um item, 
-// exibindo todas as suas propriedades, bem como botões para atualizar e excluir o item.
 import { Link, useParams } from "react-router-dom";
 import type { Product } from "../../types";
 import formatDate from "../../utils/formatDate";
+import styles from "./styles.module.css"
+import { FaCircleArrowLeft } from "react-icons/fa6";
 
 type ItemDetailsProps = {
     removeProduct: (id: string) => void
@@ -22,13 +22,19 @@ export default function ItemDetails({ products, removeProduct }: ItemDetailsProp
     }
 
     return (
-        <div>
-            <Link to="/products-list">
-                <button>voltar</button>
-            </Link>
+        <div className={styles.container}>
+            <div className={styles.header}>
+                <h1>{product.name}</h1>
+                <Link to='/products-list' style={{ textDecoration: 'none' }}>
+                    <div className={styles.return}>
+                        <FaCircleArrowLeft fontSize={"32px"} />
+                        <p>Voltar</p>
+                    </div>
+                </Link>
+            </div>
             {/* exibindo todas as suas propriedades */}
-            <h2>{product.name}</h2>
-            <p>{formatDate(product.date)}</p>
+            <p>Criado em: {formatDate(product.date)}</p>
+            <p>Atualizado em: {formatDate(product.lastUpdate)}</p>
             <p>{product.details}</p>
             <p>R$ {product.price}</p>
             <p>{product.category}</p>

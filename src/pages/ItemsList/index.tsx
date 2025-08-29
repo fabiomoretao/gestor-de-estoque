@@ -26,7 +26,7 @@ export default function ItemsList({ removeProduct, products }: ItemsListProps) {
                         <div key={product.id} className={styles.product}>
                             <p>{product.id}</p>
                             <p>{product.name}</p>
-                            <p>{product.quantity}</p>
+                            <p style={{ justifySelf: "end", marginRight: "65%" }}>{product.quantity} unid.</p>
                             <p>{product.category}</p>
                             {/* e 3 botões ver mais detalhes do item, atualizar e excluir. */}
                             <div className={styles.actions}>

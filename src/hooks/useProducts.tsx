@@ -14,7 +14,8 @@ export default function useProducts() {
     const addProduct = ({ name, category, quantity, price, details }: Omit<Product, "id" | "date">) => {
         const id = crypto.randomUUID()
         const date = new Date()
-        const product: Product = { id, name, category, quantity, price, details, date }
+        const lastUpdate = undefined
+        const product: Product = { id, name, category, quantity, price, details, date, lastUpdate }
         // se algum produto armazenado tiver o mesmo nome desse produto avisa o usuario que o produto ja existe
         if (products.find(p => (p.name === name))) {
             return alert("Esse produto já existe\nVocê pode altera-lo em 'Editar Produto'")
@@ -39,10 +40,11 @@ export default function useProducts() {
     // aplica as mudancas no produto que possue o id fornecido
     const updateProduct = (id: string, changes: Partial<Omit<Product, "id">>) => {
         const product: Product | undefined = products.find(p => (p.id === id))
+        const lastUpdate = new Date()
 
         if (product) {
             setProducts((state: Product[]) => {
-                const newState = state.map(p => p.id === id ? { ...p, ...changes } : p)
+                const newState = state.map(p => p.id === id ? { ...p, ...changes, lastUpdate } : p)
                 localStorage.setItem("ge-product", JSON.stringify(newState))
                 return newState
             })

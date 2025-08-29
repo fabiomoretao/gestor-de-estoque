@@ -6,4 +6,5 @@ export type Product = {
     price: number,
     details: string,
     date: Date
+    lastUpdate: Date | undefined
 }
