@@ -36,7 +36,6 @@ Aplicação SPA (Single Page Application) construída com **React** e **React Ro
 
 ```json
 {
-  "id": "string",            
   "name": "string",
   "quantity": 3,           
   "price": 399.90,          
