@@ -12,8 +12,8 @@ import Button from '../Button/Index.tsx'
 export const categories = ['Móveis', 'Utilitários', 'Eletronico']
 
 type ProductFormProps = {
-    initialValues?: Omit<Product, "id" | "date">,
-    onSubmit: (values: Omit<Product, "id" | "date">) => void,
+    initialValues?: Omit<Product, "id" | "date" | "lastUpdate">,
+    onSubmit: (values: Omit<Product, "id" | "date" | "lastUpdate">) => void,
     submitText?: string
 }
 

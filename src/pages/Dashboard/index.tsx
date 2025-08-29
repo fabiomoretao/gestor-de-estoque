@@ -71,7 +71,7 @@ export default function Dashboard({ products }: DashboardProps) {
                     <div key={product.id} className={styles.product}>
                         <p>{product.name}</p> {/* - Uma lista dos itens com menos de 10 em estoque. */}
                         <Button
-                            route={`product-details/${product.id}`}
+                            link={`product-details/${product.id}`}
                             className={styles.link}
                             text="Ver Produto"
                         />
@@ -91,7 +91,7 @@ export default function Dashboard({ products }: DashboardProps) {
                         <p>{product.name}</p> {/* - Uma lista dos itens com menos de 10 em estoque. */}
                         <p>{product.quantity}</p>
                         <Button
-                            route={`product-details/${product.id}`}
+                            link={`product-details/${product.id}`}
                             className={styles.link}
                             text="Ver Produto"
                         />

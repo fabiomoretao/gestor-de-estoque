@@ -2,13 +2,13 @@ import { Link } from "react-router-dom"
 import styles from "./styles.module.css"
 
 type ButtonProp = {
-  route?: string
+  link?: string
   className?: string
   text: string
   type?: "button" | "submit" | "reset"
   onClick?: () => void
 }
-export default function Button({ route, className, text, type, onClick }: ButtonProp) {
+export default function Button({ link, className, text, type, onClick }: ButtonProp) {
   const button = (
     <button
       className={`${styles.button} ${className}`}
@@ -18,5 +18,5 @@ export default function Button({ route, className, text, type, onClick }: Button
       {text}
     </button>)
 
-  return route ? <Link to={route}>{button}</Link> : button
+  return link ? <Link to={link}>{button}</Link> : button
 }

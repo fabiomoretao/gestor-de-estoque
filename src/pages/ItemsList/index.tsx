@@ -30,8 +30,8 @@ export default function ItemsList({ removeProduct, products }: ItemsListProps) {
                             <p>{product.category}</p>
                             {/* e 3 botões ver mais detalhes do item, atualizar e excluir. */}
                             <div className={styles.actions}>
-                                <Button text="Ver Detalhes" route={`/product-details/${product.id}`} />
-                                <Button text="Editar Produto" route={`/update-product/${product.id}`} />
+                                <Button text="Ver Detalhes" link={`/product-details/${product.id}`} />
+                                <Button text="Editar Produto" link={`/update-product/${product.id}`} />
                                 <Button text="Remover Produto" onClick={() => removeProduct(product.id)} className={styles.remove} />
                             </div>
                         </div>
