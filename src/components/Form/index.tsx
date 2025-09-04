@@ -8,8 +8,7 @@ import Input from '../Input.tsx'
 import type { Product } from '../../types'
 import styles from './styles.module.css'
 import Button from '../Button/Index.tsx'
-
-export const categories = ['Móveis', 'Utilitários', 'Eletronico']
+import categories from '../../categories.ts'
 
 type ProductFormProps = {
     initialValues?: Omit<Product, "id" | "date" | "lastUpdate">,
