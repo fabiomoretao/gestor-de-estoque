@@ -1,0 +1,42 @@
+.header {
+  text-align: center;
+  transform: translateY(-90%);
+  margin: 0;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.listHeader {
+  background-color: #6c3baa;
+  color: #fff;
+  display: grid;
+  font-size: 16px;
+  font-weight: 700;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 2fr;
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+.listHeader p:first-child {
+  justify-self: center;
+}
+.listHeader p:last-child {
+  justify-self: center;
+  margin-right: 20%;
+}
+
+.product {
+  border-bottom: solid 2px #aaa;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 2fr;
+  gap: 1.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}

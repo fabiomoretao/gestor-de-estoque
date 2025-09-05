@@ -1,0 +1,63 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2vw 5vw;
+  width: 90vw;
+}
+
+.cardsSection {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3vmin 5vmax;
+  margin-bottom: 2rem;
+}
+
+/* Listas */
+.list {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  padding: 0 0 1rem;
+  width: 100%;
+}
+
+.listHeader {
+  background-color: #6c3baa;
+  color: #fff;
+  border-bottom: solid 5px #bbb;
+  border-radius: 15px 15px 0 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0 4rem 0 2rem;
+  width: 100%;
+}
+.product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: solid 1px #000;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.belowTenListHeader {
+  background-color: #6c3baa;
+  color: #fff;
+  border-bottom: solid 5px #bbb;
+  border-radius: 15px 15px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 20% 1fr;
+  justify-items: center;
+}
+
+.productBelowTen {
+  display: grid;
+  grid-template-columns: 1fr 20% 1fr;
+  justify-items: end;
+}
+
+.productBelowTen > p:first-child {
+  justify-self: start;
+}

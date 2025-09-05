@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+input {
+  border: solid 2px #aaa;
+  border-radius: 5px;
+  padding: 5px 12px;
+}
+input:focus {
+  border: 2px solid transparent;
+  border-color: #9900fa;
+  outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

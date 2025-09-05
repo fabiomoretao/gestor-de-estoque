@@ -1,0 +1,22 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  transform: translateY(-80%);
+}
+
+.header h1 {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 32px;
+  margin: 0;
+  padding: 0;
+}
+.return {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 20px;
+}
