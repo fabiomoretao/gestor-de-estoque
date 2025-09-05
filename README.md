@@ -28,46 +28,99 @@ Aplicação SPA (Single Page Application) construída com **React** e **React Ro
 * react-router-dom
 * Vite (dev server / build)
 * localStorage (persistência local)
-* CSS Modules / Styled Components 
+* CSS Modules / Styled Components
+* TypeScript
 
 ---
 
 ## Modelo de Dados
 
-```json
+```typescript
 {
-  "name": "string",
-  "quantity": 3,           
-  "price": 399.90,          
-  "category": "string",
-  "description": "string",
-  "createdAt": "ISO8601",
-  "updatedAt": "ISO8601"
+    id: string,
+    name: string,
+    category: string,
+    quantity: number,
+    price: number,
+    details: string,
+    date: Date,
+    lastUpdate: Date | undefined
 }
 ```
 
 ---
 
-## Estrutura do projeto
+# Estrutura do projeto
 
-```
-src/
-├─ components/
-│  ├─ Dashboard/
-│  ├─ ItemTable.jsx
-│  ├─ ItemForm.jsx
-│  └─ ModalConfirm.jsx
-├─ pages/
-│  ├─ DashboardPage.jsx
-│  ├─ ItemsPage.jsx
-│  ├─ ItemDetailsPage.jsx
-│  └─ ItemFormPage.jsx
-├─ hooks/
-│  └─ useLocalStorage.js
-├─ utils/
-│  └─ date.js
-├─ App.jsx
-└─ main.jsx
+Abaixo está a estrutura de pastas e arquivos do projeto **gestor-de-estoque**.
+
+```bash
+root/
+├── design/
+│   └── Gerenciador de estoque.png
+├── node_modules/
+├── public/
+│   └── logo.png
+├── src/
+│   ├── components/
+│   │   ├── Button/
+│   │   │   ├── Index.tsx
+│   │   │   └── styles.module.css
+│   │   ├── Card/
+│   │   │   ├── index.tsx
+│   │   │   └── styles.module.css
+│   │   ├── Dropdown/
+│   │   │   ├── DropdownButton.tsx
+│   │   │   ├── DropdownContainer.tsx
+│   │   │   ├── DropdownContent.tsx
+│   │   │   ├── DropdownItem.tsx
+│   │   │   └── styles.module.css
+│   │   ├── Form/
+│   │   │   ├── index.tsx
+│   │   │   └── styles.module.css
+│   │   ├── Input.tsx
+│   │   ├── style.module.css
+│   │   └── Title/
+│   │       ├── index.tsx
+│   │       └── styles.module.css
+│   ├── hooks/
+│   │   └── useProducts.tsx
+│   ├── pages/
+│   │   ├── Dashboard/
+│   │   │   ├── index.tsx
+│   │   │   └── styles.module.css
+│   │   ├── ItemDetails/
+│   │   │   ├── index.tsx
+│   │   │   └── styles.module.css
+│   │   ├── ItemsList/
+│   │   │   ├── index.tsx
+│   │   │   └── styles.module.css
+│   │   ├── NewItemForm/
+│   │   │   ├── index.tsx
+│   │   │   └── styles.module.css
+│   │   └── UpdateItem/
+│   │       ├── index.tsx
+│   │       └── styles.module.css
+│   ├── types/
+│   ├── utils/
+│   ├── App.tsx
+│   ├── categories.ts
+│   ├── index.css
+│   ├── layout.module.css
+│   ├── Layout.tsx
+│   ├── main.tsx
+│   ├── router.tsx
+│   └── vite-env.d.ts
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
 ```
 
 ---
@@ -76,8 +129,6 @@ src/
 
 * **Persistência local (localStorage)**: escolha prática para MVPs e testes locais; permite demonstração de funcionalidades sem servidor. Em ambiente de produção substituir por API e banco de dados.
 * **Custom hook `useLocalStorage`**: encapsula leitura/escrita e tratamento de erros do localStorage.
-* **Cálculos com `useMemo`**: evitar recomputações caras ao renderizar o dashboard.
-* **Imutabilidade do estado**: todas atualizações de coleção usam cópias (`map`, `filter`, `concat`) para garantir previsibilidade.
 * **Formulários controlados**: validação simples no front-end e prevenção de valores inválidos.
 
 ---
@@ -85,17 +136,19 @@ src/
 ### Rotas
 
 ```jsx
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-<BrowserRouter>
-  <Routes>
-    <Route path='/' element={<DashboardPage />} />
-    <Route path='/items' element={<ItemsPage />} />
-    <Route path='/items/new' element={<ItemFormPage />} />
-    <Route path='/items/:id' element={<ItemDetailsPage />} />
-    <Route path='/items/:id/edit' element={<ItemFormPage editMode />} />
-  </Routes>
-</BrowserRouter>
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Layout />,
+        children: [
+            { index: true, element: <Home /> },
+            { path: "new-product", element: <NewProduct />, },
+            { path: "products-list", element: <ProductsList />, },
+            { path: "product-details/:productId", element: <ProductDetails />, },
+            { path: "update-product/:productId", element: <UpdateProduct />, }
+        ]
+    },
+])
 ```
 
 ---
@@ -117,26 +170,16 @@ npm run dev
 
 ```
 
-Build para produção:
-
-```bash
-npm run build
-npm run preview
-```
-
----
-
 ## Scripts (package.json)
 
 ```json
 {
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "vitest",
-    "lint": "eslint . --ext .js,.jsx"
-  }
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
 }
 ```
 
@@ -144,6 +187,7 @@ npm run preview
 
 ## Contato
 
-Nome: \[Fábio Moretão]
-E-mail: \[[fabiojosemoretaodesouza@gmail.com](mailto:fabiojosemoretaodesouza@gmail.com)]
-GitHub: \[github.com/fabiomoretao]
+- **Email:** <fabiojosemoretaodesouza@gmail.com>  
+- **GitHub:** [fabiomoretao](https://github.com/fabiomoretao)  
+- **LinkedIn:** [fabiomoretao](https://www.linkedin.com/in/fabiomoretao)  
+- **Instagram:** [@fabio_moretao](https://instagram.com/fabio_moretao)  
