@@ -11,7 +11,7 @@ export default function useProducts() {
     })
 
     // adiciona um novo produto com o dados fornecidos pelo usuaria, e cria uma id unica e a data de criacao desse produto
-    const addProduct = ({ name, category, quantity, price, details }: Omit<Product, "id" | "date">) => {
+    const addProduct = ({ name, category, quantity, price, details }: Omit<Product, "id" | "date" | "lastUpdate">) => {
         const id = crypto.randomUUID()
         const date = new Date()
         const lastUpdate = undefined

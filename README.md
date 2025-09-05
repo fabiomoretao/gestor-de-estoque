@@ -6,19 +6,20 @@ Aplicação SPA (Single Page Application) construída com **React** e **React Ro
 
 ## Funcionalidades
 
-* **Dashboard** com métricas e listas:
+- **Dashboard** com métricas e listas:
 
-  * Quantidade total de tipos distintos de itens.
-  * Quantidade total de unidades em estoque (soma das quantidades).
-  * Quantidade de itens adicionados nos últimos 10 dias e lista desses itens.
-  * Quantidade e lista dos itens com estoque menor que 10 unidades.
-* **Listagem completa** de itens em tabela com ações: Ver / Editar / Excluir.
-* **Detalhes do item**: página que exibe todas as propriedades do item com ações de editar e excluir.
-* **Formulário de criação** de novos itens (campos mínimos: nome, quantidade, preço, categoria, descrição).
-* **Formulário de edição** com o mesmo layout do de criação.
-* **Navegação client-side** (React Router) sem recarregamento de página.
-* **Persistência em localStorage** para manter os dados entre atualizações de página e fechamentos do navegador.
-* Validações básicas nos formulários e confirmações para operações destrutivas (ex: exclusão).
+  - Quantidade total de tipos distintos de itens.
+  - Quantidade total de unidades em estoque (soma das quantidades).
+  - Quantidade de itens adicionados nos últimos 10 dias e lista desses itens.
+  - Quantidade e lista dos itens com estoque menor que 10 unidades.
+
+- **Listagem completa** de itens em tabela com ações: Ver / Editar / Excluir.
+- **Detalhes do item**: página que exibe todas as propriedades do item com ações de editar e excluir.
+- **Formulário de criação** de novos itens (campos mínimos: nome, quantidade, preço, categoria, descrição).
+- **Formulário de edição** com o mesmo layout do de criação.
+- **Navegação client-side** (React Router) sem recarregamento de página.
+- **Persistência em localStorage** para manter os dados entre atualizações de página e fechamentos do navegador.
+- Validações básicas nos formulários e confirmações para operações destrutivas (ex: exclusão).
 
 ---
 
