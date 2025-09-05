@@ -25,12 +25,12 @@ Aplicação SPA (Single Page Application) construída com **React** e **React Ro
 
 ## Tecnologias
 
-- React (functional components + hooks)
-- react-router-dom
-- Vite (dev server / build)
-- localStorage (persistência local)
-- CSS Modules / Styled Components
-- TypeScript
+* React (functional components + hooks)
+* react-router-dom
+* Vite (dev server / build)
+* localStorage (persistência local)
+* CSS Modules / Styled Components
+* TypeScript
 
 ---
 
@@ -128,9 +128,9 @@ root/
 
 ## Padrões e decisões técnicas
 
-- **Persistência local (localStorage)**: escolha prática para MVPs e testes locais; permite demonstração de funcionalidades sem servidor. Em ambiente de produção substituir por API e banco de dados.
-- **Custom hook `useLocalStorage`**: encapsula leitura/escrita e tratamento de erros do localStorage.
-- **Formulários controlados**: validação simples no front-end e prevenção de valores inválidos.
+* **Persistência local (localStorage)**: escolha prática para MVPs e testes locais; permite demonstração de funcionalidades sem servidor. Em ambiente de produção substituir por API e banco de dados.
+* **Custom hook `useLocalStorage`**: encapsula leitura/escrita e tratamento de erros do localStorage.
+* **Formulários controlados**: validação simples no front-end e prevenção de valores inválidos.
 
 ---
 
@@ -138,17 +138,17 @@ root/
 
 ```jsx
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: 'new-product', element: <NewProduct /> },
-      { path: 'products-list', element: <ProductsList /> },
-      { path: 'product-details/:productId', element: <ProductDetails /> },
-      { path: 'update-product/:productId', element: <UpdateProduct /> }
-    ]
-  }
+    {
+        path: "/",
+        element: <Layout />,
+        children: [
+            { index: true, element: <Home /> },
+            { path: "new-product", element: <NewProduct />, },
+            { path: "products-list", element: <ProductsList />, },
+            { path: "product-details/:productId", element: <ProductDetails />, },
+            { path: "update-product/:productId", element: <UpdateProduct />, }
+        ]
+    },
 ])
 ```
 
@@ -180,7 +180,7 @@ npm run dev
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
-  }
+  },
 }
 ```
 
@@ -188,7 +188,7 @@ npm run dev
 
 ## Contato
 
-- **Email:** <fabiojosemoretaodesouza@gmail.com>
-- **GitHub:** [fabiomoretao](https://github.com/fabiomoretao)
-- **LinkedIn:** [fabiomoretao](https://www.linkedin.com/in/fabiomoretao)
-- **Instagram:** [@fabio_moretao](https://instagram.com/fabio_moretao)
+- **Email:** <fabiojosemoretaodesouza@gmail.com>  
+- **GitHub:** [fabiomoretao](https://github.com/fabiomoretao)  
+- **LinkedIn:** [fabiomoretao](https://www.linkedin.com/in/fabiomoretao)  
+- **Instagram:** [@fabio_moretao](https://instagram.com/fabio_moretao)  
