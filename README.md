@@ -4,7 +4,7 @@ Aplicação SPA (Single Page Application) construída com **React** e **React Ro
 
 ---
 ## Demo
-**Link:** [gestor-de-estoque](gestor-de-estoque-umber.vercel.app) 
+**Link:** [gestor-de-estoque-umber.vercel.app](https://gestor-de-estoque-umber.vercel.app/) 
 
 ## Funcionalidades
 
