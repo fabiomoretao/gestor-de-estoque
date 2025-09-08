@@ -3,6 +3,8 @@
 Aplicação SPA (Single Page Application) construída com **React** e **React Router**, destinada ao gerenciamento completo de um inventário local. Os dados são persistidos no `localStorage` do navegador, permitindo uso offline e preservação de estado sem infraestrutura de backend.
 
 ---
+## Demo
+**Link:** [gestor-de-estoque](gestor-de-estoque-umber.vercel.app) 
 
 ## Funcionalidades
 
